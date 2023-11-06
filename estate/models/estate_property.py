@@ -30,5 +30,5 @@ class EstateProperty(models.Model):
                                         ('sold', 'Sold')
                                         ])
 
-
+    property_type_id = fields.Many2one("estate.property.type")
 
