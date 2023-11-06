@@ -3,7 +3,7 @@ from odoo import fields, models
 
 class EstateProperty(models.Model):
     _name = "estate.property"
-    _description = "Disposals to assembly"
+    _description = "Property Management"
 
     name = fields.Char(required=True)
     description = fields.Text()
@@ -21,4 +21,6 @@ class EstateProperty(models.Model):
                                                      ('south', 'South'),
                                                      ('west', 'West'),
                                                      ('east', 'East')])
+
+
 
