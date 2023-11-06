@@ -31,3 +31,4 @@ class EstateProperty(models.Model):
                                         ])
 
 
+
