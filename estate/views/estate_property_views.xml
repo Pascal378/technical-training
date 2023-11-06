@@ -2,22 +2,6 @@
     <record id="estate_property_action" model="ir.actions.act_windows">
         <field name="name">Estate Property Action</field>
         <field name="res_model">estate.property</field>
-        <field name="view_mode">tree, form</field>
-         <field name="help" type="html">
-          <p class="o_view_nocontent_smiling_face">
-            Estate Property Management
-          </p><p>
-            Manage your properties
-          </p><p>
-            Manage offers
-          </p>
-        </field>
+        <field name="view_mode">tree,form</field>
     </record>
-
-    <menuitem id="estate_property_menu" name="Estate Property">
-    <menuitem id="estate_property_advertisement" name="Advertisment">
-        <menuitem id="estate_property_menu_action" action="estate_property_action"/>
-    </menuitem>
-</menuitem>
-
 </odoo>
