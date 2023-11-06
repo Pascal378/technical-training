@@ -28,8 +28,8 @@
             <form string="Properties">
                 <sheet>
                     <group>
+                        <field name="name"/>
                         <group>
-                            <field name="name"/>
                             <field name="postcode"/>
                             <field name="date_availability"/>
                         </group>
@@ -53,8 +53,6 @@
                         </notebook>
                     </group>
                 </sheet>
-                <field name="bedrooms"/>
-                <field name="living_area"/>
             </form>
         </field>
     </record>
