@@ -10,7 +10,7 @@
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <tree string="Properties">
-                <field name="name"/>
+                <field name="name">
                 <field name="postcode"/>
                 <field name="bedrooms"/>
                 <field name="living_area"/>
@@ -53,6 +53,17 @@
                                     <field name="garden_orientation"/>
                                 </group>
                             </page>
+                            <page string="Offers">
+                                <group>
+                                    <field name="offer_ids">
+                                        <tree>
+                                            <field name="price"/>
+                                            <field name="partner_id"/>
+                                            <field name="status"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
                         </notebook>
                 </sheet>
             </form>
@@ -75,4 +86,5 @@
             </search>
         </field>
     </record>
+
 </odoo>
