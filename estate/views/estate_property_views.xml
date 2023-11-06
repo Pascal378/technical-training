@@ -5,13 +5,19 @@
         <field name="view_mode">tree, form</field>
          <field name="help" type="html">
           <p class="o_view_nocontent_smiling_face">
-            Define a new lost reason
+            Estate Property Management
           </p><p>
-            Use lost reasons to explain why an opportunity is lost.
+            Manage your properties
           </p><p>
-            Some examples of lost reasons: "We don't have people/skill", "Price too high"
+            Manage offers
           </p>
         </field>
     </record>
+
+    <menuitem id="estate_property_menu" name="Estate Property">
+    <menuitem id="estate_property_advertisement" name="Advertisment">
+        <menuitem id="estate_property_menu_action" action="estate_property_action"/>
+    </menuitem>
+</menuitem>
 
 </odoo>
