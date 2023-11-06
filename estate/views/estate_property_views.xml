@@ -27,8 +27,8 @@
         <field name="arch" type="xml">
             <form string="Properties">
                 <sheet>
+                    <h3><field name="name"/></h3>
                     <group>
-                        <h3><field name="name"/></h3>
                         <group>
                             <field name="postcode"/>
                             <field name="date_availability"/>
@@ -37,6 +37,7 @@
                             <field name="expected_price"/>
                             <field name="selling_price"/>
                         </group>
+                    </group>
                         <notebook>
                             <page string="Description">
                                 <group>
@@ -51,7 +52,6 @@
                                 </group>
                             </page>
                         </notebook>
-                    </group>
                 </sheet>
             </form>
         </field>
