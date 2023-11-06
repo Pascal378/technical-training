@@ -28,6 +28,7 @@
             <form string="Properties">
                 <sheet>
                     <h3><field name="name"/></h3>
+                    <field name="tag_ids" widget="many2many_tags"/>
                     <group>
                         <group>
                             <field name="property_type_id"/>

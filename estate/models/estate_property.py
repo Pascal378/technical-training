@@ -18,17 +18,21 @@ class EstateProperty(models.Model):
     garage = fields.Boolean()
     garden = fields.Boolean()
     garden_area = fields.Integer()
-    garden_orientation = fields.Selection(selection=[('north', 'North'),
+    garden_orientation = fields.Selection(string="Garden Orientation",selection=[('north', 'North'),
                                                      ('south', 'South'),
                                                      ('west', 'West'),
                                                      ('east', 'East')])
-    active = fields.Boolean(default=True)
+    active = fields.Boolean(string="Active",default=True)
 
     state = fields.Selection(selection=[('new', 'New'),
                                         ('offer received', 'Offer received'),
                                         ('offer accepted', 'Offer accepted'),
                                         ('sold', 'Sold')
-                                        ])
+                                        ], string="Status")
 
     property_type_id = fields.Many2one("estate.property.type")
 
+    salesmen_id = fields.Many2one('res.users', string="Salesmen",default=lambda self: self.env.user)
+    buyer_id = fields.Many2one("res.partner",string="Buyer",copy=False)
+
+    tag_ids = fields.Many2many("estate.property.tag", string="Taxes")
