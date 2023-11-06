@@ -1,6 +1,9 @@
 <odoo>
     <menuitem id="estate_property_menu" name="Estate Property">
         <menuitem id="estate_property_advertisement" action="estate_property_action" name="Advertisement"/>
-        <menuitem id="estate_property_type" name="Settings" action="estate.estate_property_type_action"/>
+        <menuitem id="estate_property_settings" name="Settings">
+            <menuitem id="estate_property_type_settings" name="Types" action="estate.estate_property_type_action"/>
+            <menuitem id="estate_property_tag_settings" name="Tags" action="estate.estate_property_tag_action"/>
+        </menuitem>
     </menuitem>
 </odoo>
