@@ -22,6 +22,11 @@ class EstateProperty(models.Model):
                                                      ('south', 'South'),
                                                      ('west', 'West'),
                                                      ('east', 'East')])
+    active = fields.Boolean(default=True)
 
+    state = fields.Selection(selection=[('north', 'North'),
+                                        ('south', 'South'),
+                                        ('west', 'West'),
+                                        ('east', 'East')])
 
 
