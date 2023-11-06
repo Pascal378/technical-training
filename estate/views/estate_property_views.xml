@@ -28,7 +28,7 @@
             <form string="Properties">
                 <sheet>
                     <group>
-                        <field name="name"/>
+                        <h3><field name="name"/></h3>
                         <group>
                             <field name="postcode"/>
                             <field name="date_availability"/>
