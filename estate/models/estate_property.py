@@ -5,6 +5,17 @@ from dateutil.relativedelta import relativedelta
 class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Property Management"
+    _sql_constraints = [
+        (
+        'positive_expected_price',
+        'CHECK(expected_price >= 0)',
+        'Only positive values are allowed for expected price'
+        ),
+        ('positive_selling_price',
+         'CHECK(selling_price >= 0)',
+         'Only positive values are allowed for selling price'
+         )
+    ]
 
     name = fields.Char(required=True)
     description = fields.Text()

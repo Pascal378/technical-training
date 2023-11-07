@@ -5,6 +5,12 @@ from dateutil.relativedelta import relativedelta
 class PropertyOffer(models.Model):
     _name = "estate.property.offer"
     _description = "Offers for properties"
+    _sql_constraints = [
+        ('positive_selling_price',
+         'CHECK(price >= 0)',
+         'Only positive values are allowed for offer price'
+         )
+    ]
 
     price = fields.Float()
     status = fields.Selection(copy=False, selection=[('accepted', 'Accepted'),
