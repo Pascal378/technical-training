@@ -12,7 +12,7 @@ class PropertyOffer(models.Model):
     property_id = fields.Many2one("estate.property", required=True)
 
     validity = fields.Integer(default=7)
-    date_deadline = fields.Date(compute="_validity")
+    date_deadline = fields.Date(compute="_validity",inverse="_inverse_validity")
 
     @api.depends("create_date", "validity")
     def _validity(self):
@@ -21,3 +21,15 @@ class PropertyOffer(models.Model):
                 record.date_deadline = record.create_date + relativedelta(days=record.validity)
             else:
                 record.date_deadline = fields.Date.today() + relativedelta(days=record.validity)
+
+    @api.depends("create_date", "validity")
+    def _inverse_validity(self):
+        for record in self:
+            if record.create_date:
+                d1 = fields.datetime.strptime(str(self.create_date), '%Y-%m-%d')
+                d2 = fields.datetime.strptime(str(self.date_deadline), '%Y-%m-%d')
+                self.validity = int((d2-d1).days)
+            else:
+                d1 = fields.datetime.strptime(str(fields.Date.today), '%Y-%m-%d')
+                d2 = fields.datetime.strptime(str(self.date_deadline), '%Y-%m-%d')
+                self.validity = int((d2 - d1).days)
