@@ -64,3 +64,12 @@ class PropertyOffer(models.Model):
             raise exceptions.ValidationError(
                 "Selling Price must be at least 90 percent of the expected price. Adjust your offer."
             )
+
+    def check_offer(self):
+
+    @api.model
+    def create(self, vals):
+        for record in self:
+            if record.property_id.best_offer > vals.price:
+                raise exceptions.UserError("Offer is lower than existing offers")
+        return super().create(vals)

@@ -7,9 +7,9 @@ class EstateProperty(models.Model):
     _description = "Property Management"
     _sql_constraints = [
         (
-        'positive_expected_price',
-        'CHECK(expected_price >= 0)',
-        'Only positive values are allowed for expected price'
+            'positive_expected_price',
+            'CHECK(expected_price >= 0)',
+            'Only positive values are allowed for expected price'
         ),
         ('positive_selling_price',
          'CHECK(selling_price >= 0)',
@@ -21,7 +21,7 @@ class EstateProperty(models.Model):
     name = fields.Char(required=True)
     description = fields.Text()
     postcode = fields.Char()
-    date_availability = fields.Date(default=lambda self: fields.Date.today() + relativedelta(months=3),copy=False)
+    date_availability = fields.Date(default=lambda self: fields.Date.today() + relativedelta(months=3), copy=False)
     expected_price = fields.Float(required=True)
     selling_price = fields.Float(readonly=True, copy=False)
     bedrooms = fields.Integer(default=2)
@@ -30,11 +30,11 @@ class EstateProperty(models.Model):
     garage = fields.Boolean()
     garden = fields.Boolean()
     garden_area = fields.Integer()
-    garden_orientation = fields.Selection(string="Garden Orientation",selection=[('north', 'North'),
-                                                     ('south', 'South'),
-                                                     ('west', 'West'),
-                                                     ('east', 'East')])
-    active = fields.Boolean(string="Active",default=True)
+    garden_orientation = fields.Selection(string="Garden Orientation", selection=[('north', 'North'),
+                                                                                  ('south', 'South'),
+                                                                                  ('west', 'West'),
+                                                                                  ('east', 'East')])
+    active = fields.Boolean(string="Active", default=True)
 
     state = fields.Selection(selection=[('new', 'New'),
                                         ('offer received', 'Offer received'),
@@ -45,8 +45,8 @@ class EstateProperty(models.Model):
 
     property_type_id = fields.Many2one("estate.property.type")
 
-    salesmen_id = fields.Many2one('res.users', string="Salesmen",default=lambda self: self.env.user)
-    buyer_id = fields.Many2one("res.partner",string="Buyer",copy=False)
+    salesmen_id = fields.Many2one('res.users', string="Salesmen", default=lambda self: self.env.user)
+    buyer_id = fields.Many2one("res.partner", string="Buyer", copy=False)
 
     tag_ids = fields.Many2many("estate.property.tag", string="Tags")
     offer_ids = fields.One2many("estate.property.offer", "property_id", string="Offers")
@@ -54,7 +54,7 @@ class EstateProperty(models.Model):
     total_area = fields.Float(compute="_total_area")
     best_offer = fields.Float(compute="_best_offer")
 
-    @api.depends("garden_area","living_area")
+    @api.depends("garden_area", "living_area")
     def _total_area(self):
         for record in self:
             record.total_area = record.garden_area + record.living_area
@@ -89,3 +89,8 @@ class EstateProperty(models.Model):
         else:
             self.state = 'cancelled'
 
+    @api.ondelete(at_uninstall=False)
+    def _unlink_if_NewOrCancelled(self):
+        for record in self:
+            if record.state != "new" and record.state != "cancelled":
+                raise exceptions.UserError("You can only delete new or cancelled properties")
