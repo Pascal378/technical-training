@@ -4,7 +4,7 @@
             <field name="model">res.users</field>
             <field name="inherit_id" ref="base.view_users_form"/>
             <field name="arch" type="xml">
-                <notebook>
+                <xpath expr="//notebook" position="inside">
                     <page String="Real Estate Properties">
                         <field name="property_ids">
                             <field name="title"/>
@@ -17,7 +17,7 @@
                             <field name="selling_price"/>
                         </field>
                     </page>
-                </notebook>
+                </xpath>
             </field>
         </record>
 </odoo>
