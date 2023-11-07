@@ -16,6 +16,7 @@ class EstateProperty(models.Model):
          'Only positive values are allowed for selling price'
          )
     ]
+    _order = "id desc"
 
     name = fields.Char(required=True)
     description = fields.Text()

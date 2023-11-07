@@ -12,7 +12,7 @@ class PropertyOffer(models.Model):
          'Only positive values are allowed for offer price'
          )
     ]
-
+    _order = "price desc"
     price = fields.Float()
     status = fields.Selection(copy=False, selection=[('accepted', 'Accepted'),
                                                      ('refused', 'Refused')])
