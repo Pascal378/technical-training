@@ -12,16 +12,15 @@
             <form>
                 <noteboook>
                     <page String="Properties">
-                        <group>
+                        <tree>
                             <field name="property_ids">
                                 <field name="name" string="Title"/>
                                 <field name="expected_price"/>
                                 <field name="state" string="Status"/>
                             </field>
-                        </group>
+                        </tree>
                     </page>
                 </noteboook>
-
             </form>
         </field>
     </record>

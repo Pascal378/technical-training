@@ -1,6 +1,6 @@
 {
     "name": "Real Estate",  # The name that will appear in the App list
-    "version": "19.8",  # Version
+    "version": "19.9",  # Version
     "application": True,  # This line says the module is an App, and not a module
     "depends": ["base"],  # dependencies
     "data": [
