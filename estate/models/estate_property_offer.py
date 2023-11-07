@@ -56,3 +56,10 @@ class PropertyOffer(models.Model):
             self.status = 'refused'
 
         return True
+
+    @api.constrains('price', "property_id")
+    def _check_price(self):
+        if self.price < (self.property_id.expected_price * 0.9):
+            raise exceptions.ValidationError(
+                "Selling Price must be at least 90 percent of the expected price. Adjust your offer."
+            )
