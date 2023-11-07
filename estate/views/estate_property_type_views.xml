@@ -11,19 +11,13 @@
         <field name="arch" type="xml">
             <form>
                 <field name="name" />
-                <noteboook>
-                    <page String="Properties">
-
-                            <field name="property_ids">
-                                                        <tree>
-                                <field name="name" string="Title"/>
-                                <field name="expected_price"/>
-                                <field name="state" string="Status"/>
-                                                        </tree>
-                            </field>
-
-                    </page>
-                </noteboook>
+                <field name="property_ids">
+                    <tree>
+                        <field name="name" string="Title"/>
+                        <field name="expected_price"/>
+                        <field name="state" string="Status"/>
+                    </tree>
+                </field>
             </form>
         </field>
     </record>
