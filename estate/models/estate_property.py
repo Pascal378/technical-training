@@ -48,9 +48,9 @@ class EstateProperty(models.Model):
 
     @api.depends("offer_ids")
     def _best_offer(self):
-        max = 0
+        best = 0
         for record in self:
-            for line in record.offer_ids:
-                if max < line.price:
-                    max = line.price
+            for offer in record.offer_ids:
+                if best < offer.price:
+                    best = offer.price
             record.best_offer = max

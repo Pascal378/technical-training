@@ -17,5 +17,5 @@ class PropertyOffer(models.Model):
     @api.depends("create_date", "validity")
     def _validity(self):
         for record in self:
-            if record.create_date:
+            if vals.get(record.create_date):
                 record.date_deadline = record.create_date + relativedelta(days=record.validity)
