@@ -62,6 +62,12 @@
                                         </tree>
                                     </field>
                             </page>
+                            <page string="Other info">
+                                <group>
+                                    <field name="salesmen_id" string="Salesman"/>
+                                    <field name="buyer_id" string="Buyer"/>
+                                </group>
+                            </page>
                         </notebook>
                 </sheet>
             </form>
