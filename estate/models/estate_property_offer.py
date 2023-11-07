@@ -27,6 +27,6 @@ class PropertyOffer(models.Model):
     def _inverse_validity(self):
         for record in self:
             if record.create_date:
-                record.validity = record.create_date - record.date_deadline
+                record.validity = record.create_date.date() - record.date_deadline
             else:
                 record.validity = fields.Date.today() - record.date_deadline
