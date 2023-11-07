@@ -1,4 +1,4 @@
-from odoo import fields, models, api
+from odoo import fields, models, api, exceptions
 from dateutil.relativedelta import relativedelta
 
 
@@ -30,3 +30,23 @@ class PropertyOffer(models.Model):
                 record.validity = (record.date_deadline - record.create_date.date()).days
             else:
                 record.validity = (record.date_deadline - fields.Date.today()).days
+
+    def accept_offer(self):
+        if not self.property_id.buyer_id:
+            self.status = 'accepted'
+            self.property_id.selling_price = self.price
+            self.property_id.buyer_id = self.partner_id
+        else:
+            raise exceptions.UserError("You can only accept one offer per property")
+
+        return True
+
+    def refuse_offer(self):
+        if self.status == 'accepted':
+            self.status = 'refused'
+            self.property_id.selling_price = False
+            self.property_id.buyer_id = False
+        else:
+            self.status = 'refused'
+
+        return True

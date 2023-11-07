@@ -1,4 +1,4 @@
-from odoo import fields, models, api
+from odoo import fields, models, api, exceptions
 from dateutil.relativedelta import relativedelta
 
 
@@ -27,7 +27,8 @@ class EstateProperty(models.Model):
     state = fields.Selection(selection=[('new', 'New'),
                                         ('offer received', 'Offer received'),
                                         ('offer accepted', 'Offer accepted'),
-                                        ('sold', 'Sold')
+                                        ('sold', 'Sold'),
+                                        ('cancelled', 'Cancelled')
                                         ], string="Status")
 
     property_type_id = fields.Many2one("estate.property.type")
@@ -63,3 +64,16 @@ class EstateProperty(models.Model):
         else:
             self.garden_orientation = False
             self.garden_area = False
+
+    def sell_prop(self):
+        if self.state == 'cancelled':
+            raise exceptions.UserError("Can't sell a cancelled property.")
+        else:
+            self.state = 'sold'
+
+    def cancel_prop(self):
+        if self.state == 'sold':
+            raise exceptions.UserError("Can't cancel a sold property.")
+        else:
+            self.state = 'cancelled'
+
