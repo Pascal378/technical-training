@@ -6,6 +6,8 @@
             <tree>
                 <field name="price"/>
                 <field name="status"/>
+                <field name="validity"/>
+                <field name="date_deadline"/>
                 <field name="partner_id"/>
             </tree>
         </field>
@@ -19,6 +21,8 @@
                 <group>
                     <field name="price"/>
                     <field name="status"/>
+                    <field name="validity"/>
+                    <field name="date_deadline"/>
                     <field name="partner_id"/>
                 </group>
             </form>
