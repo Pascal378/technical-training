@@ -4,5 +4,5 @@ class InheritEstateProperty(models.Model):
     _inherit = 'estate.property'
 
     def sell_prop(self):
-        print("It works!")
+        raise exceptions.UserError("Works")
         return super().sell_prop()
