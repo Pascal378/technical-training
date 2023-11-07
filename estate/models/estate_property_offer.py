@@ -65,7 +65,6 @@ class PropertyOffer(models.Model):
                 "Selling Price must be at least 90 percent of the expected price. Adjust your offer."
             )
 
-    def check_offer(self):
 
     @api.model
     def create(self, vals):
