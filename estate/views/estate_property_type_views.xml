@@ -10,15 +10,18 @@
         <field name="model">estate.property.type</field>
         <field name="arch" type="xml">
             <form>
+                <field name="name" />
                 <noteboook>
                     <page String="Properties">
-                        <tree>
+
                             <field name="property_ids">
+                                                        <tree>
                                 <field name="name" string="Title"/>
                                 <field name="expected_price"/>
                                 <field name="state" string="Status"/>
+                                                        </tree>
                             </field>
-                        </tree>
+
                     </page>
                 </noteboook>
             </form>
