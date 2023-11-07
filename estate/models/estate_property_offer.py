@@ -2,6 +2,7 @@ from odoo import fields, models, api, exceptions
 from dateutil.relativedelta import relativedelta
 
 
+
 class PropertyOffer(models.Model):
     _name = "estate.property.offer"
     _description = "Offers for properties"

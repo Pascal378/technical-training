@@ -12,3 +12,4 @@ class PropertyType(models.Model):
     ]
 
     name = fields.Char()
+    property_ids = fields.One2many()
