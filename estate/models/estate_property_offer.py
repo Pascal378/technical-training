@@ -73,4 +73,5 @@ class PropertyOffer(models.Model):
             property = self.env["estate.property"].browse(property_id)
             if property.best_offer > vals["price"]:
                 raise exceptions.UserError("Offer is lower than existing offers")
+            property.state="offer received"
         return super().create(vals_list)
