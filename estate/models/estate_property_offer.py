@@ -66,9 +66,11 @@ class PropertyOffer(models.Model):
             )
 
 
-    @api.model
-    def create(self, vals):
-        for record in self:
-            if record.property_id.best_offer > vals.price:
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            property_id = vals["property_id"]
+            property = self.env["estate.property"].browse(property_id)
+            if property.best_offer > vals["price"]:
                 raise exceptions.UserError("Offer is lower than existing offers")
-        return super().create(vals)
+        return super().create(vals_list)
