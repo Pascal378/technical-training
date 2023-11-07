@@ -9,7 +9,7 @@
                         <field name="property_ids">
                             <tree>
                             <field name="name"/>
-                            <field name="property_type_id" String="Property Type"/>
+                            <field name="property_type_id"/>
                             <field name="postcode"/>
                             <field name="tag_ids"/>
                             <field name="bedrooms"/>
